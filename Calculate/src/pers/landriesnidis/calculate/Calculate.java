@@ -9,10 +9,14 @@ import pers.landriesnidis.calculate.exception.UnknownOperatorException;
 public class Calculate {
 	
 	public static void main(String[] args) throws NumberFormatException, InvalidExpressionException, UnknownOperatorException {
-		String expression = "5/0+8";
-		System.out.println(expression);
-		System.out.println(expressionPretreatment(expression));
-		System.out.println(operation(expression));
+		
+		args = new String[]{"3.14*5*5-5*-3"};
+		
+		if(args.length>0){
+			System.out.println(operation(args[0]));
+		}else{
+			System.out.println("no expression.");
+		}
 	}
 	
 	/**
@@ -44,7 +48,7 @@ public class Calculate {
 				}
 				if(b){
 					zero+=2;
-					for(int j=i+4;i<len+zero;++j){
+					for(int j=i+2;i<len+zero;++j){
 						if(RPN.isOperator(sb.charAt(j))){
 							sb.insert(j, ')');
 							++zero;
@@ -72,8 +76,9 @@ public class Calculate {
 		// 预处理
 		expression = expressionPretreatment(expression);
 		
+		// 使用逆波兰算法处理
 		LinkedList<String> rpnList = RPN.parse(expression);
-		System.out.println(rpnList);
+		// System.out.println(rpnList);
 		
 		// 若表达式第一位为运算符，则表达式无效
 		if(RPN.isOperator(rpnList.get(0).charAt(0))) throw new InvalidExpressionException(expression);
@@ -100,11 +105,11 @@ public class Calculate {
 				// 将消耗掉的运算符和数值删除替换成运算结果
 				rpnList.remove(i);
 				rpnList.remove(i-1);
-					rpnList.remove(i-2);
-					rpnList.add(i-2,result);
-					i-=2;
+				rpnList.remove(i-2);
+				rpnList.add(i-2,result);
+				i-=2;
 				
-				System.out.println(rpnList);
+				// System.out.println(rpnList);
 				continue;
 			}
 		}
