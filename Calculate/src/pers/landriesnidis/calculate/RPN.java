@@ -48,7 +48,7 @@ public class RPN {
 	 * 		(2) 若运算符c为左括号"("，则直接存入运算符栈。
 	 * 		(3) 若运算符c为右括号")"，则依次从运算符栈中弹出运算符并保存至output链表，直到遇到左括号为止。   
 	 * 		(4) 若运算符c为非括号运算符（即：四则运算符号）。
-	 * 			(a) 若运算符栈为空则直接将c压栈。
+	 * 			(a) 若运算符栈为空则直接将c压栈至运算符栈。
 	 * 			(b) 若运算符栈栈顶的运算符为左括号，则将c直接压栈至运算符栈。
 	 * 			(c) 若运算符c的优先级高于运算符栈栈顶的运算符优先级，则将c压栈至运算符栈。
 	 * 			(d) 若运算符c的优先级小于或等于运算符栈栈顶的运算符优先级，则依次从运算符栈中弹出运算符并保存至output链表，直到遇到左括号或c的优先级高于栈顶运算符优先级的为止。再将c压栈至运算符栈。
@@ -97,7 +97,7 @@ public class RPN {
 				// 若运算符c为非括号运算符（即：四则运算符号）
 				}else{
 					
-					// 若运算符栈为空则直接将c压栈。
+					// 若运算符栈为空则直接将c压栈至运算符栈。
 					if(operators.isEmpty()){
 						operators.push(c);
 					
@@ -156,12 +156,12 @@ public class RPN {
 	
 	/**
 	 * 将泛型为String的列表转换为连续的String
-	 * @param stack 包含多个String片段的栈
+	 * @param list 包含多个String片段的栈
 	 * @return 连续的String对象
 	 */
-	private static String list2String(List<String> stack){
+	private static String list2String(List<String> list){
 		StringBuilder sb = new StringBuilder();
-		for(String s:stack) sb.append(s);
+		for(String s:list) sb.append(s);
 		return sb.toString();
 	}
 }
