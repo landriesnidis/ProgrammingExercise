@@ -48,7 +48,7 @@ public class Calculate {
 				}
 				if(b){
 					len+=2;
-					for(int j=i+2;i<len;++j){
+					for(int j=i+3;i<len;++j){
 						if(RPN.isOperator(sb.charAt(j))){
 							sb.insert(j, ')');
 							++len;
@@ -73,7 +73,7 @@ public class Calculate {
 	 */
 	public static double operation(String expression) throws NumberFormatException, InvalidExpressionException, UnknownOperatorException{
 		
-		// 预处理
+		// 将表达式补充完整
 		expression = expressionCompletion(expression);
 		
 		// 使用逆波兰算法处理

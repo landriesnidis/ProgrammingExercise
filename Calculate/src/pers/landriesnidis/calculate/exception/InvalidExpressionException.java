@@ -1,7 +1,7 @@
 package pers.landriesnidis.calculate.exception;
 
 /**
- * 未知的运算符异常
+ * 无效表达式异常
  * @author Landriesnidis
  */
 public class InvalidExpressionException extends Exception{

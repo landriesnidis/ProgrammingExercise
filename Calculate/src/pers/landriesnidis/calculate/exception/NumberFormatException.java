@@ -1,7 +1,7 @@
 package pers.landriesnidis.calculate.exception;
 
 /**
- * 未知的运算符异常
+ * 数值格式异常
  * @author Landriesnidis
  */
 public class NumberFormatException extends Exception{
